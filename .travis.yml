@@ -16,7 +16,7 @@ after_success:
   # now push the images to docker hub
   # login
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
+  # - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
   - docker push fabianmoronzirfas/fibonacci-client
   - docker push fabianmoronzirfas/fibonacci-nginx
   - docker push fabianmoronzirfas/fibonacci-server
