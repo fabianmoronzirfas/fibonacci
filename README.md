@@ -34,6 +34,13 @@ defines links from nginx to our containers (!hostnames) inside.
       ]
 ```
 
+memory is needed. Lookup each service what the mem should be.
+```json
+"memory": 128
+```
+
+
+
 AWS RDS === postgres in container
 AWS Elastic Cache === Redis
 
