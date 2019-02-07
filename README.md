@@ -37,7 +37,6 @@ defines links from nginx to our containers (!hostnames) inside.
 AWS RDS === postgres in container
 AWS Elastic Cache === Redis
 
-
 AWS Stuff
 
 Create a Security Group in the regions virtual private cloud VPC that allows all AWS services in there to talk to each other.  
