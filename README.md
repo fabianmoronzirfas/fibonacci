@@ -33,3 +33,15 @@ defines links from nginx to our containers (!hostnames) inside.
         "server"
       ]
 ```
+
+AWS RDS === postgres in container
+AWS Elastic Cache === Redis
+
+
+AWS Stuff
+
+Create a Security Group in the regions virtual private cloud VPC that allows all AWS services in there to talk to each other.  
+
+Secrets could be here https://console.aws.amazon.com/secretsmanager/home?region=us-east-1#/home
+
+or https://www.vaultproject.io
