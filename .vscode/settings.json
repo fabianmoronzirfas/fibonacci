@@ -1,0 +1,11 @@
+{
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#00ff00",
+    "titleBar.activeForeground": "#000",
+    "titleBar.inactiveForeground": "#000",
+    "titleBar.inactiveBackground": "#32cd3200"
+
+  },
+  "editor.wordWrap": "bounded",
+  "cSpell.enabled": false
+}
