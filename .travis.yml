@@ -26,10 +26,10 @@ deploy:
   skip_cleanup: true
   provider: elasticbeanstalk
   region: "us-east-1"
-  app: "fibonacci"
-  env: "Fibonacci-env"
+  app: "multi-docker"
+  env: "MultiDocker-env"
   bucket_name: "elasticbeanstalk-us-east-1-254973975500"
-  bucket_path: "docker-fibonacci"
+  bucket_path: "multi-docker"
   on:
     branch: master
   access_key_id: "$ACCESS_KEY_ID"
