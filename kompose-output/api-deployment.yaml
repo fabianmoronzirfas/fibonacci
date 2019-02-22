@@ -1,0 +1,55 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.17.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: api
+  name: api
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: api
+    spec:
+      containers:
+      - env:
+        - name: EXPRESS_PORT
+          value: "5000"
+        - name: PG_DATABASE
+          value: postgres
+        - name: PG_HOST
+          value: postgres
+        - name: PG_PASSWORD
+          value: postgres_password
+        - name: PG_PORT
+          value: "5432"
+        - name: PG_USER
+          value: postgres
+        - name: REDIS_HOST
+          value: redis
+        - name: REDIS_PORT
+          value: "6379"
+        image: api
+        name: api
+        resources: {}
+        volumeMounts:
+        - mountPath: /usr/app/node_modules
+          name: api-claim0
+        - mountPath: /usr/app
+          name: api-claim1
+      restartPolicy: Always
+      volumes:
+      - name: api-claim0
+        persistentVolumeClaim:
+          claimName: api-claim0
+      - name: api-claim1
+        persistentVolumeClaim:
+          claimName: api-claim1
+status: {}
