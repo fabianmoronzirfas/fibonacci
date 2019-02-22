@@ -4,7 +4,8 @@ import './App.css';
 import Fib from './Fib';
 import logo from './logo.svg';
 import OtherPage from './OtherPage';
-
+// tslint:disable-next-line:no-console
+console.log('fib');
 class App extends Component {
   public render() {
     return (
