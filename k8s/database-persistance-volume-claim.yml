@@ -1,0 +1,13 @@
+apiVersion: v1
+# see the notes.md
+kind: PersistentVolumeClaim
+metadata:
+  name: database-persistant-volume-claim
+spec:
+  accessModes:
+    # can onyl be used by one pod the is also ReadOnlyMany (many pods can read) and there is ReadWriteMany…
+    - ReadWriteOnce
+  resources:
+    requests:
+      # we are asking for 2GB of space for our DB
+      storage: 2Gi

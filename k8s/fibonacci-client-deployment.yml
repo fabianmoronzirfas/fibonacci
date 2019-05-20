@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fibonacci-client-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+    # labels need to match the matchLables
+      labels:
+        editor: vscode
+        component: web
+    spec:
+      containers:
+      - name: fibonacci-client
+        image: fabianmoronzirfas/fibonacci-client
+        ports:
+          - containerPort: 3000

@@ -1,0 +1,37 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t fabianmoronzirfas/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run fabianmoronzirfas/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t fabianmoronzirfas/fibonacci-client ./client
+  - docker build -t fabianmoronzirfas/fibonacci-nginx ./nginx
+  - docker build -t fabianmoronzirfas/fibonacci-server ./server
+  - docker build -t fabianmoronzirfas/fibonacci-worker ./worker
+  # now push the images to docker hub
+  # login
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD"
+  - docker push fabianmoronzirfas/fibonacci-client
+  - docker push fabianmoronzirfas/fibonacci-nginx
+  - docker push fabianmoronzirfas/fibonacci-server
+  - docker push fabianmoronzirfas/fibonacci-worker
+
+deploy:
+  skip_cleanup: true
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-us-east-1-254973975500"
+  bucket_path: "multi-docker"
+  on:
+    branch: master
+  access_key_id: "$ACCESS_KEY_ID"
+  secret_access_key:
+    secure: "$SECRET_ACCESS_KEY"
